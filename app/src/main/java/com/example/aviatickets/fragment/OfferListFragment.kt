@@ -9,6 +9,7 @@ import com.example.aviatickets.R
 import com.example.aviatickets.adapter.OfferListAdapter
 import com.example.aviatickets.databinding.FragmentOfferListBinding
 import com.example.aviatickets.model.service.FakeService
+import com.example.aviatickets.model.service.FakeService.offerList
 
 
 class OfferListFragment : Fragment() {
@@ -39,7 +40,15 @@ class OfferListFragment : Fragment() {
         setupUI()
         adapter.setItems(FakeService.offerList)
     }
+    private fun sortListByPrice() {
+        val sortedList = offerList.sortedBy { it.price }
+        adapter.setItems(sortedList)
+    }
 
+    private fun sortListByDuration() {
+        val sortedList = offerList.sortedBy { it.flight.duration }
+        adapter.setItems(sortedList)
+    }
     private fun setupUI() {
         with(binding) {
             offerList.adapter = adapter
@@ -47,15 +56,11 @@ class OfferListFragment : Fragment() {
             sortRadioGroup.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
                     R.id.sort_by_price -> {
-                        /**
-                         * implement sorting by price
-                         */
+                        sortListByPrice()
                     }
 
                     R.id.sort_by_duration -> {
-                        /**
-                         * implement sorting by duration
-                         */
+                        sortListByDuration()
                     }
                 }
             }

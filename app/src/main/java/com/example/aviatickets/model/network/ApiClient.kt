@@ -10,7 +10,8 @@ object ApiClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    /**
-     * think about performing network request
-     */
+    fun <T> createService(serviceClass: Class<T>): T {
+        return retrofit.create(serviceClass)
+    }
+
 }

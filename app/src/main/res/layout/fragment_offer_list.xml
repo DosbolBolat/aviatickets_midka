@@ -10,7 +10,7 @@
     tools:context=".fragment.OfferListFragment">
 
     <RadioGroup
-        android:id="@+id/sort_radio_group"
+        android:id="@+id/sortRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp">
@@ -30,7 +30,7 @@
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/offer_list"
+        android:id="@+id/offerList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
